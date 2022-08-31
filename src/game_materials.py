@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 '''
-Global game Materials
+Global game economy
 '''
 
 # imports
@@ -11,9 +11,9 @@ from collections import Counter
 # imports
 
 
-class GameMaterials:
+class GameEconomy:
   '''
-  Total Game Materials
+  Total Game Economy
   '''
 
   def __init__(self):
