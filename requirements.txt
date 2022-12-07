@@ -1,0 +1,12 @@
+ffmpeg-python
+gym
+ipython
+matplotlib
+multipledispatch
+networkx
+Pillow
+PyYAML
+ray
+seaborn
+tensorflow
+tqdm
