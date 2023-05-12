@@ -10,11 +10,11 @@ from ray.rllib.models.tf.recurrent_net import RecurrentNetwork as RecurrentTFMod
 from ray.rllib.utils.annotations import override
 from ray.rllib.utils import try_import_tf
 import numpy as np
-import tensorflow as tf
+# import tensorflow as tf
 #   script imports
 #imports
 
-# tf = try_import_tf()
+tf1, tf, tfv = try_import_tf()
 
 # classes
 class FacilityNet(RecurrentTFModelV2):
