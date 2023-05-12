@@ -81,8 +81,8 @@ class World:
     return not isinstance(self.grid[x][y], TerrainCell)
 
   @staticmethod
-  def c_tostring(x, y):
-    return np.array([x, y]).tostring()
+  def c_tobytes(x, y):
+    return np.array([x, y]).tobytes()
 
   def map_to_graph(self):
     g = nx.Graph()
@@ -90,7 +90,7 @@ class World:
       for y in range(1, self.size_y-1):
         for c in [(x-1, y), (x+1, y), (x, y-1), (x, y+1)]:
           if self.is_traversable(x, y) and self.is_traversable(c[0], c[1]):
-            g.add_edge(World.c_tostring(x, y), World.c_tostring(c[0], c[1]))
+            g.add_edge(World.c_tobytes(x, y), World.c_tobytes(c[0], c[1]))
     return g
 
   @lru_cache(maxsize = 32)  # speedup the simulation
@@ -98,10 +98,10 @@ class World:
     g = self.map_to_graph()
     path = nx.astar_path(
       g,
-      source=World.c_tostring(x1, y1),
-      target=World.c_tostring(x2, y2)
+      source=World.c_tobytes(x1, y1),
+      target=World.c_tobytes(x2, y2)
     )
-    path_np = [np.fromstring(p, dtype=int) for p in path]
+    path_np = [np.frombuffer(p, dtype=int) for p in path]
     return [(p[0], p[1]) for p in path_np]
 
   def get_facilities(self, clazz):
