@@ -90,6 +90,7 @@ ppo_policy_config_consumer = {
 models.ModelCatalog.register_custom_model('facility_net', FacilityNet)
 
 def print_model_summaries():
+  models.ModelCatalog.register_custom_model('facility_net', FacilityNet)
   config = models.MODEL_DEFAULTS.copy()
   config.update({'custom_model': 'facility_net'})
   facility_net = models.ModelCatalog.get_model_v2(
